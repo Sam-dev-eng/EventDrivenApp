@@ -7,8 +7,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class EventPublisher {
 
-    @Autowired
-    private ApplicationEventPublisher publisher;
+
+    private final ApplicationEventPublisher publisher;
+
+    public EventPublisher(ApplicationEventPublisher publisher) {
+        this.publisher = publisher;
+    }
 
     public void publish(Object event){
         publisher.publishEvent(event);
